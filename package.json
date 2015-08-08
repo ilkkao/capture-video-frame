@@ -1,0 +1,24 @@
+{
+  "name": "capture-video-frame",
+  "version": "0.1.0",
+  "description": "A micro-library for taking screenshots from a running HTML5 video.",
+  "main": "capture-video-frame.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilkkao/capture-video-frame.git"
+  },
+  "keywords": [
+    "js",
+    "video",
+    "capture"
+  ],
+  "author": "Ilkka Oksanen <iao@iki.fi> (http://iao.fi)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ilkkao/capture-video-frame/issues"
+  },
+  "homepage": "https://github.com/ilkkao/capture-video-frame#readme"
+}
