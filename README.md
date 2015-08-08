@@ -29,8 +29,28 @@ JavaScript:
 ```js
 var frame = captureVideoFrame('my-video', 'png');
 
+// Show the image
 var img = document.getElementById('my-screenshot');
 img.setAttribute('src', frame.dataUri);
+
+// Upload the image
+var formData = new FormData();
+formData.append('file', frame.blob, 'my-screenshot.' + frame.format);
+
+var request = new XMLHttpRequest();
+request.open('POST', '/api/upload', true);
+request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+request.send(formData);
+
+// OR
+//
+// $.ajax({
+//     url: '/api/upload',
+//     type: 'POST',
+//     data: formData,
+//     processData: false,
+//     contentType: false
+// });
 ```
 
 ## Browser support
@@ -39,15 +59,15 @@ Tested on current Chrome and Firefox.
 
 ## API
 
-```captureVideoFrame(source, format)```
+#### ```captureVideoFrame(source, format)```
 
-### Options
+#### Parameters
 
 ```source``` (element or string, mandatory) Source video. If string, id of the element.
 
 ```format``` (string, optional) Output image format. Can be either `png` or `jpeg`. `png` is the default.
 
-### Return value
+#### Return value
 
 - Object with `blob`, `dataUri`, and `format` properties if the capture succeeded
 - `false` if the capture failed.
