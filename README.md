@@ -33,6 +33,10 @@ var img = document.getElementById('my-screenshot');
 img.setAttribute('src', frame.dataUri);
 ```
 
+## Browser support
+
+Tested on current Chrome and Firefox.
+
 ## API
 
 ```captureVideoFrame(source, format)```
