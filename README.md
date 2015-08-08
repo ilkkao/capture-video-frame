@@ -12,18 +12,24 @@ or
 
 ## Example
 
+HTML:
+
 ```html
 <script src="capture-video-frame.js"></script>
 
-<video id="my-video" />
+<video id="my-video" autoplay>
+  <source src="movie.mp4" type="video/mp4">
+</video>
 
-<img id="screenshot" />
+<img id="my-screenshot" />
 ```
+
+JavaScript:
 
 ```js
 var frame = captureVideoFrame('my-video', 'png');
 
-var img = document.getElementById('screenshot');
+var img = document.getElementById('my-screenshot');
 img.setAttribute('src', frame.dataUri);
 ```
 
@@ -34,11 +40,13 @@ img.setAttribute('src', frame.dataUri);
 ### Options
 
 ```source``` (element or string, mandatory) Source video. If string, id of the element.
+
 ```format``` (string, optional) Output image format. Can be either `png` or `jpeg`. `png` is the default.
 
 ### Return value
 
-Object with `blob`, `dataUri`, and `format` properties.
+- Object with `blob`, `dataUri`, and `format` properties if the capture succeeded
+- `false` if the capture failed.
 
 Image blob can be easily uploaded to the server using XHR2 FormData API.
 
