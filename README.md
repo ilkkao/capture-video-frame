@@ -43,7 +43,7 @@ request.open('POST', '/api/upload', true);
 request.setRequestHeader('Content-Type', 'application/multipart/form-data; charset=UTF-8');
 request.send(formData);
 
-// or with jQeury
+// or with jQuery
 $.ajax({
     url: '/api/upload',
     method: 'POST',
