@@ -37,20 +37,20 @@ img.setAttribute('src', frame.dataUri);
 var formData = new FormData();
 formData.append('file', frame.blob, 'my-screenshot.' + frame.format);
 
+// with plain JS
 var request = new XMLHttpRequest();
 request.open('POST', '/api/upload', true);
-request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+request.setRequestHeader('Content-Type', 'application/multipart/form-data; charset=UTF-8');
 request.send(formData);
 
-// OR
-//
-// $.ajax({
-//     url: '/api/upload',
-//     type: 'POST',
-//     data: formData,
-//     processData: false,
-//     contentType: false
-// });
+// or with jQeury
+$.ajax({
+    url: '/api/upload',
+    method: 'POST',
+    data: formData,
+    processData: false,
+    contentType: false
+});
 ```
 
 ## Browser support
