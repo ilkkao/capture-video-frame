@@ -23,7 +23,7 @@
 
         canvas.getContext('2d').drawImage(video, 0, 0);
 
-        var dataUri = canvas.toDataURL('img/' + format);
+        var dataUri = canvas.toDataURL('image/' + format);
         var data = dataUri.split(',')[1];
         var mimeType = dataUri.split(';')[0].slice(5)
 
