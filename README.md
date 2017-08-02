@@ -4,11 +4,9 @@ A micro-library for taking screenshots from a running HTML5 video. Built to work
 
 ## Installation
 
-    $ npm install --save capture-video-frame
-
-or
-
-    $ bower install --save capture-video-frame
+```bash
+$ npm install --save capture-video-frame
+```
 
 ## Example
 
