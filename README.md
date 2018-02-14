@@ -65,6 +65,8 @@ Tested on current Chrome and Firefox.
 
 ```format``` (string, optional) Output image format. Can be either `png` or `jpeg`. `png` is the default.
 
+```quality``` (number, optional) A Number between 0 and 1 indicating image quality if the requested type is image/jpeg or image/webp.
+
 #### Return value
 
 - Object with `blob`, `dataUri`, and `format` properties if the capture succeeded
