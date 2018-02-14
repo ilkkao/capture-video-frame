@@ -65,7 +65,7 @@ Tested on current Chrome and Firefox.
 
 ```format``` (string, optional) Output image format. Can be either `png` or `jpeg`. `png` is the default.
 
-```quality``` (number, optional) A Number between 0 and 1 indicating image quality if the requested type is image/jpeg or image/webp.
+```quality``` (number, optional) A Number between 0 and 1 indicating image quality if the requested type is image/jpeg or image/webp. The default value is 0.92.
 
 #### Return value
 
