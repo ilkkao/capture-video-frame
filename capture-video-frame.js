@@ -11,7 +11,7 @@
         }
 
         format = format || 'jpeg';
-        quality = quality || 1;
+        quality = quality || 0.92;
 
         if (!video || (format !== 'png' && format !== 'jpeg')) {
             return false;
