@@ -5,12 +5,13 @@
         root.captureVideoFrame = factory();
     }
 }(this, function () {
-    return function captureVideoFrame(video, format) {
+    return function captureVideoFrame(video, format, quality) {
         if (typeof video === 'string') {
             video = document.getElementById(video);
         }
 
         format = format || 'jpeg';
+        quality = quality || 0.92;
 
         if (!video || (format !== 'png' && format !== 'jpeg')) {
             return false;
@@ -23,7 +24,7 @@
 
         canvas.getContext('2d').drawImage(video, 0, 0);
 
-        var dataUri = canvas.toDataURL('image/' + format);
+        var dataUri = canvas.toDataURL('image/' + format, quality);
         var data = dataUri.split(',')[1];
         var mimeType = dataUri.split(';')[0].slice(5)
 

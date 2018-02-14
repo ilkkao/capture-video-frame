@@ -57,13 +57,15 @@ Tested on current Chrome and Firefox.
 
 ## API
 
-#### ```captureVideoFrame(source, format)```
+#### ```captureVideoFrame(source, format, quality)```
 
 #### Parameters
 
 ```source``` (element or string, mandatory) Source video. If string, id of the element.
 
 ```format``` (string, optional) Output image format. Can be either `png` or `jpeg`. `png` is the default.
+
+```quality``` (number, optional) A Number between 0 and 1 indicating image quality if the requested type is image/jpeg or image/webp. The default value is 0.92.
 
 #### Return value
 
