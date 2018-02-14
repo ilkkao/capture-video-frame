@@ -57,7 +57,7 @@ Tested on current Chrome and Firefox.
 
 ## API
 
-#### ```captureVideoFrame(source, format)```
+#### ```captureVideoFrame(source, format, quality)```
 
 #### Parameters
 
