@@ -25,7 +25,7 @@ HTML:
 JavaScript:
 
 ```js
-var frame = captureVideoFrame('my-video', 'png');
+var frame = captureVideoFrame('my-video-id', 'png');
 
 // Show the image
 var img = document.getElementById('my-screenshot');
