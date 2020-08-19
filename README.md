@@ -8,6 +8,12 @@ A micro-library for taking screenshots from a running HTML5 video. Built to work
 $ npm install --save capture-video-frame
 ```
 
+or
+
+```bash
+$ yarn add capture-video-frame
+```
+
 ## Example
 
 HTML:
