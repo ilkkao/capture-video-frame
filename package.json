@@ -1,6 +1,6 @@
 {
   "name": "capture-video-frame",
-  "version": "0.1.3",
+  "version": "1.0.0",
   "description": "A micro-library for taking screenshots from a running HTML5 video.",
   "main": "capture-video-frame.js",
   "scripts": {
