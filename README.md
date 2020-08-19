@@ -1,6 +1,6 @@
 # capture-video-frame
 
-A micro-library for taking screenshots from a running HTML5 video. Built to work together with [getUserMedia.js](https://github.com/addyosmani/getUserMedia.js/)
+A micro-library for taking screenshots from a running HTML5 video.
 
 ## Installation
 
