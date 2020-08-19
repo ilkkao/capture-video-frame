@@ -25,6 +25,7 @@ JavaScript:
 ```js
 import captureVideoFrame from "capture-video-frame.js";
 
+// When you want to record the image
 const frame = captureVideoFrame("my-video-id", "png");
 
 // Show the image
