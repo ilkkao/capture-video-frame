@@ -13,10 +13,8 @@ $ npm install --save capture-video-frame
 HTML:
 
 ```html
-<script src="capture-video-frame.js"></script>
-
 <video id="my-video" autoplay>
-  <source src="movie.mp4" type="video/mp4">
+  <source src="movie.mp4" type="video/mp4" />
 </video>
 
 <img id="my-screenshot" />
@@ -25,29 +23,34 @@ HTML:
 JavaScript:
 
 ```js
-var frame = captureVideoFrame('my-video-id', 'png');
+import captureVideoFrame from "capture-video-frame.js";
+
+const frame = captureVideoFrame("my-video-id", "png");
 
 // Show the image
-var img = document.getElementById('my-screenshot');
-img.setAttribute('src', frame.dataUri);
+const img = document.getElementById("my-screenshot");
+img.setAttribute("src", frame.dataUri);
 
 // Upload the image...
-var formData = new FormData();
-formData.append('file', frame.blob, 'my-screenshot.' + frame.format);
+const formData = new FormData();
+formData.append("file", frame.blob, `my-screenshot.${frame.format}`);
 
 // ...with plain JS
-var request = new XMLHttpRequest();
-request.open('POST', '/api/upload', true);
-request.setRequestHeader('Content-Type', 'application/multipart/form-data; charset=UTF-8');
+const request = new XMLHttpRequest();
+request.open("POST", "/api/upload", true);
+request.setRequestHeader(
+  "Content-Type",
+  "application/multipart/form-data; charset=UTF-8"
+);
 request.send(formData);
 
 // ...or with jQuery
 $.ajax({
-    url: '/api/upload',
-    method: 'POST',
-    data: formData,
-    processData: false,
-    contentType: false
+  url: "/api/upload",
+  method: "POST",
+  data: formData,
+  processData: false,
+  contentType: false,
 });
 ```
 
@@ -57,15 +60,15 @@ Tested on current Chrome and Firefox.
 
 ## API
 
-#### ```captureVideoFrame(source, format, quality)```
+#### `captureVideoFrame(source, format, quality)`
 
 #### Parameters
 
-```source``` (element or string, mandatory) Source video. If string, id of the element.
+`source` (element or string, mandatory) Source video. If string, id of the element.
 
-```format``` (string, optional) Output image format. Can be either `png` or `jpeg`. `png` is the default.
+`format` (string, optional) Output image format. Can be either `png` or `jpeg`. `png` is the default.
 
-```quality``` (number, optional) A Number between 0 and 1 indicating image quality if the requested type is image/jpeg or image/webp. The default value is 0.92.
+`quality` (number, optional) A Number between 0 and 1 indicating image quality if the requested type is image/jpeg or image/webp. The default value is 0.92.
 
 #### Return value
 
@@ -78,4 +81,4 @@ Image data URI can be easily set as `<img>` `src` attribute to show the captured
 
 ## License
 
-  MIT
+MIT
