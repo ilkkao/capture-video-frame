@@ -29,9 +29,11 @@ HTML:
 JavaScript:
 
 ```js
-import captureVideoFrame from "capture-video-frame.js";
+import captureVideoFrame from "capture-video-frame";
 
-// When you want to record the image
+// ...
+
+// Call captureVideoFrame() when you want to record a screenshot
 const frame = captureVideoFrame("my-video-id", "png");
 
 // Show the image
