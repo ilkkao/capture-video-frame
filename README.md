@@ -40,26 +40,13 @@ const frame = captureVideoFrame("my-video-id", "png");
 const img = document.getElementById("my-screenshot");
 img.setAttribute("src", frame.dataUri);
 
-// Upload the image...
+// Upload the image
 const formData = new FormData();
 formData.append("file", frame.blob, `my-screenshot.${frame.format}`);
 
-// ...with plain JS
-const request = new XMLHttpRequest();
-request.open("POST", "/api/upload", true);
-request.setRequestHeader(
-  "Content-Type",
-  "application/multipart/form-data; charset=UTF-8"
-);
-request.send(formData);
-
-// ...or with jQuery
-$.ajax({
-  url: "/api/upload",
+const response = await fetch("/api/upload", {
   method: "POST",
-  data: formData,
-  processData: false,
-  contentType: false,
+  body: formData,
 });
 ```
 
