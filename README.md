@@ -5,13 +5,19 @@ A micro-library for taking screenshots from a running HTML5 video.
 ## Installation
 
 ```bash
-$ npm install --save capture-video-frame
+npm install capture-video-frame
 ```
 
 or
 
 ```bash
-$ yarn add capture-video-frame
+yarn add capture-video-frame
+```
+
+The package ships ES module and CommonJS builds with TypeScript types. For a plain `<script>` tag, use the UMD build, which defines a global `captureVideoFrame` function:
+
+```html
+<script src="https://unpkg.com/capture-video-frame@2"></script>
 ```
 
 ## Example
@@ -19,7 +25,7 @@ $ yarn add capture-video-frame
 HTML:
 
 ```html
-<video id="my-video" autoplay>
+<video id="my-video" autoplay muted>
   <source src="movie.mp4" type="video/mp4" />
 </video>
 
@@ -34,7 +40,7 @@ import captureVideoFrame from "capture-video-frame";
 // ...
 
 // Call captureVideoFrame() when you want to record a screenshot
-const frame = captureVideoFrame("my-video-id", "png");
+const frame = captureVideoFrame("my-video", "png");
 
 // Show the image
 const img = document.getElementById("my-screenshot");
@@ -50,30 +56,54 @@ const response = await fetch("/api/upload", {
 });
 ```
 
+`captureVideoFrameAsync()` does the same without blocking on image encoding and without building a data URI, which is faster for large videos:
+
+```js
+import { captureVideoFrameAsync } from "capture-video-frame";
+
+const frame = await captureVideoFrameAsync("my-video", "webp");
+
+img.setAttribute("src", URL.createObjectURL(frame.blob));
+```
+
 ## Browser support
 
-Tested on current Chrome and Firefox.
+All current browsers. The video must be loaded from the same origin as the page, or served with CORS headers and the `crossorigin` attribute set on the `<video>` element. Otherwise the browser blocks reading the frame and the capture throws a `SecurityError`.
 
 ## API
 
-#### `captureVideoFrame(source, format, quality)`
+### `captureVideoFrame(video, format, quality)`
 
 #### Parameters
 
-`source` (element or string, mandatory) Source video. If string, id of the element.
+`video` (element or string, mandatory) Source video. If a string, the id of the element.
 
-`format` (string, optional) Output image format. Can be either `png` or `jpeg`. `png` is the default.
+`format` (string, optional) Output image format: `jpeg`, `png`, or `webp`. `jpeg` is the default.
 
-`quality` (number, optional) A Number between 0 and 1 indicating image quality if the requested type is image/jpeg or image/webp. The default value is 0.92.
+`quality` (number, optional) A number between 0 and 1 indicating image quality for `jpeg` and `webp`. The default value is 0.92.
 
 #### Return value
 
-- Object with `blob`, `dataUri`, and `format` properties if the capture succeeded
-- `false` if the capture failed.
+- Object with `blob`, `dataUri`, and `format` properties if the capture succeeded.
+- `false` if the capture failed: the video doesn't exist, has no frame loaded yet, or the format is unknown.
 
-Image blob can be easily uploaded to the server using XHR2 FormData API.
+`format` is the format of the returned image. A browser that can't encode the requested format returns `png` instead.
 
-Image data URI can be easily set as `<img>` `src` attribute to show the captured image.
+The blob can be uploaded to a server with `FormData` and `fetch()`.
+
+The data URI can be set as the `src` attribute of an `<img>` to show the captured image.
+
+### `captureVideoFrameAsync(video, format, quality)`
+
+Takes the same parameters. Returns a promise of an object with `blob` and `format` properties, or `false` if the capture failed.
+
+## Development
+
+```bash
+npm install
+npm test
+npm run build
+```
 
 ## License
 
