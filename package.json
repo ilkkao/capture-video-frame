@@ -1,24 +1,54 @@
 {
   "name": "capture-video-frame",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A micro-library for taking screenshots from a running HTML5 video.",
-  "main": "capture-video-frame.js",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.cts",
+  "unpkg": "./dist/capture-video-frame.umd.js",
+  "jsdelivr": "./dist/capture-video-frame.umd.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsdown",
+    "typecheck": "tsc",
+    "test": "vitest run",
+    "lint:package": "publint && attw --pack .",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build && npm run lint:package"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ilkkao/capture-video-frame.git"
   },
   "keywords": [
-    "js",
     "video",
-    "capture"
+    "capture",
+    "screenshot",
+    "frame",
+    "canvas"
   ],
   "author": "Ilkka Oksanen <iao@iki.fi> (http://iao.fi)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ilkkao/capture-video-frame/issues"
   },
-  "homepage": "https://github.com/ilkkao/capture-video-frame#readme"
+  "homepage": "https://github.com/ilkkao/capture-video-frame#readme",
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
+    "jsdom": "^30.1.3",
+    "publint": "^0.3.25",
+    "tsdown": "^0.23.2",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  }
 }
