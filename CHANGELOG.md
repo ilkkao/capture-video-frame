@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.0.0 - Unreleased
+## 2.0.0 - 2026-10-25
 
 - Ship ES module, CommonJS, and UMD builds with TypeScript types. The default import now works in bundlers.
 - `require()` still exposes `captureVideoFrame`, and the UMD build keeps the `captureVideoFrame` global and AMD support.
